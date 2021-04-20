@@ -1,6 +1,11 @@
+import {useHistory} from 'react-router-dom'; 
+
 import NewMeetupForm from '../components/meetups/NewMeetupForm';
 
 function NewMeetupPage() {
+    const history = useHistory();
+    console.log(history);
+
     function addMeetupHandler(meetupData) {
         fetch('https://react-getting-started-468df-default-rtdb.firebaseio.com/meetups.json',
         {
@@ -9,6 +14,8 @@ function NewMeetupPage() {
             headers: {
                 'Content-Type':'application/json'
             }
+        }).then(() => {
+            history.replace('/');
         });
     }
 
